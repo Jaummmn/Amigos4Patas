@@ -1,0 +1,175 @@
+<nav class="container_login ">
+   
+
+    {% if idLogin is null and idCanilUser is null %}
+
+    <button  class="logIn">Entrar</button>    
+    
+    {% else %}
+    <div class="user">
+        <div class="user_header">
+            <div class="img_user">
+                <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+            </div>   
+            <div class="name_user">
+                <h3>{{nomeUsuario}}</h3> 
+            </div>
+        </div>    
+        <div class="conteudo-hover hidden">
+            <div class="info_user">
+                {% if idCanilUser is defined and idLogin is null %}
+                <a href="http://amigos4patas.com/?pagina=Canil&idCanil={{idCanilUser }}">Meus pets</a>
+                {% else %}
+                <a href="http://amigos4patas.com/?pagina=User&idUser={{idLogin}}">Meu Perfil</a>
+                {% endif %}
+             
+                <a href="http://amigos4patas.com/?pagina=EditProfile">
+                    <p>Editar Perfil</p>
+                </a>
+                
+                <hr>
+                <a href="http://amigos4patas.com/?pagina=LogOut">
+                    <input type="submit" value="Sair">
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}  
+    <img  class="menu" src="public/assets/img/icons8-menu-circulado-100.png">
+    </nav>
+   </div>
+  
+</div>
+
+    <div class="bg">
+        <div class="form" id="form1">
+        <button class="btnClose">x</button>
+        <h2 class="msg_form">Bem-vindo de volta</h2>
+        <form method="post" action="?pagina=Login&metodo=LoginUser" >
+            <input type="text" name="login" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="senha" required>
+            <h3 class="text_modal"><a href="http://amigos4patas.com/?pagina=RecuperarSenha">esqueceu a senha?</a></h3>
+            <input type="submit" value="Entrar">
+            <h3 class="text_modal"><a href="http://amigos4patas.com/?pagina=Cadastro">Nao sou cadastrado</a></h3>
+        </form>
+
+        </div>
+    </div>
+
+        <div class="bg_mobile_menu">    
+            <nav class= "mobile_menu">
+                    <p class="close">></p>
+                    <div class="text_menu">
+                        <nav>
+                            <ul>
+                                <li><a href="http://amigos4patas.com/?pagina=home">Home</a></li>
+                                <li><a href="http://amigos4patas.com/?pagina=feed">Publicações</a></li>
+                                <li><a href="http://amigos4patas.com/?pagina=pets">Pets</a></li>
+                                {% if idLogin is null and idCanilUser is null %}
+
+                                <li><a href="http://amigos4patas.com/?pagina=Login">Entrar</a></li>
+                
+                                {% elseif idCanilUser is defined and idLogin is null %}
+                                <li><a href="http://amigos4patas.com/?pagina=Canil&idCanil={{idCanilUser }}">Meus pets</a></li>
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% elseif idCanilUser is null and idLogin is defined%}
+                               <li> <a href="http://amigos4patas.com/?pagina=User&idUser={{idLogin}}">Meu Perfil</a></li>
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% else %}
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% endif %}  
+
+                            </ul>
+                        </nav>  
+                    </div>
+                    {% if not idLogin is defined or idCanilUser is not defined %}
+                    <div class="user hidden">
+                        <div class="img_user hidden">
+                            <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+                        </div>
+                        <div class="name_user">
+                            <h3>{{nomeUsuario}}</h3> 
+                            
+                       
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="user">
+                        <div class="img_user" >
+                            <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+                        </div>
+                        <div class="name_user">
+                            <h3>{{nomeUsuario}}</h3> 
+                 
+                  
+                        </div>
+                    </div>
+                {% endif %}
+                
+                
+            </nav>
+        </div>
+</header>
+<section>
+    <div class="box_login">
+        <h3>Crie sua conta como Adotante ou como canil</h3>
+        <div class="select_user">
+            <input type="radio" id="canil" value="canil" name="user">
+            <label for="canil">Lar de adoção</label>
+            <input type="radio" id="user" value="adotante" name="user" checked>
+            <label for="user">Adotante</label>
+        </div>
+        <div class="user_info">
+            <form action="?pagina=Cadastro&metodo=insertUser" method="post" enctype="multipart/form-data">
+                <label for="nomeUsuario">Nome de exibição</label>
+                <input type="text" id="nomeUsuario" name="nomeUsuario" required>
+                <label for="emailUsuario">E-mail</label>
+                <input type="email" id="emailUsuario" name="emailUsuario" required>
+                <label for="senhaUsuario">Senha</label>
+                <input type="password" id="senhaUsuario" name="senhaUsuario" required>
+                <label class="picture" for="picture__input" tabIndex="0">
+                    <span class="picture__image"></span>
+                </label>
+                <input type="file" name="pictureUser" id="picture__input" required>
+                <input type="submit" value="Registrar-se" name="insertUser">
+            </form>
+        </div>
+        <div class="canil_info hidden">
+            <form action="?pagina=Cadastro&metodo=insertCanil" method="post" enctype="multipart/form-data">
+                <label for="nomeUsuario">Nome de exibição</label>
+                <input type="text" id="nomeUsuario" name="nomeUsuario" required>
+                <label for="emailUsuario">E-mail</label>
+                <input type="email" id="emailUsuario" name="emailUsuario" required>
+                <label for="senhaUsuario">Senha</label>
+                <input type="password" id="senhaUsuario" name="senhaUsuario" required>
+                
+                <label for="NumUsuario">Número de telefone</label>
+                <input type="tel" id="NumUsuario" name="NumUsuario" placeholder="(xx) xxxxx-xxxx" pattern="\(\d{2}\) \d{5}-\d{4}" required>
+                    
+                
+                <label for="pictureUser">Foto de Perfil</label>
+                <input type="file" name="pictureUser" required>
+                <label for="descricaoCanil">Descrição do canil</label>
+                <textarea id="descricaoCanil" cols="30" rows="5" class="description_canil" name="canil_descricao" required></textarea>
+                <label for="chavePix">Registre sua chave pix para receber doações</label>
+                <input type="text" id="chavePix" name="chavePix" required>
+                <label for="cidade">Cidade</label>
+                <select name="cidade" required>
+                    <option value="Franco da Rocha">Franco da Rocha</option>
+                    <option value="Francisco Morato">Francisco Morato</option>
+                    <option value="Caieiras">Caieiras</option>
+                    <option value="São Paulo">São Paulo</option>
+                </select>
+                <label for="pictureBanner">Banner do Perfil</label>
+                <input type="file" name="pictureBanner" required>
+                <input type="submit" value="Registrar-se" name="insertCanil">
+            </form>
+        </div>
+    </div>
+</section>

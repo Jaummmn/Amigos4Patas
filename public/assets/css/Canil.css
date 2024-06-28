@@ -1,0 +1,139 @@
+
+.canil{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container_pets_canil{
+    border: 1px solid rgb(97, 97, 97);
+}
+.canil_main_profile{
+    position: relative;
+    padding: 10px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.canil_profile{
+    position: relative;
+    max-width: 850px;
+    
+}
+.canil_description {
+    text-align: justify;
+  
+    
+}
+
+.btn_edit_profile_canil{
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    float: right;
+}
+.btn_edit_profile_canil img{
+    width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+}
+.canil_banner img{
+    width: 100%;
+    max-height: 500px;
+   
+}
+.canil_img{
+    position:relative;
+    bottom: 90px;
+    left: 10px;
+}
+.canil_img img{
+    border: 1px solid rgb(97, 97, 97);
+    border-radius:50%;
+    object-fit: cover;
+    width: 150px;
+    height:150px;
+}
+
+.bg_form_child {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canil_section{
+    position: relative;
+    bottom: 100px;
+ 
+}
+.container_form {
+    margin: 20px;
+    width: 90%;
+    max-width: 450px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container_form input[type=text],input[type=number] {
+    width: 90%;
+    height: 48px;
+    margin: 20px;
+    border: 1px solid grey;
+    font-size: 18px;
+    padding: 20px;
+
+} 
+.container_form select,textarea , input[type=date]{
+    margin: 10px 20px;
+    width: 90%;
+}
+.container_form input[type=submit]{
+   margin: 0 auto;
+   display: block;
+   width: 90%;
+   font-size: 20px;
+}
+
+.form_pet{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.form_pet label{
+    margin: 0px 10px;
+}
+
+
+@media only screen and (max-width: 768px){
+    .container_pets_canil{
+        width: 100%;
+    }
+    .canil_main_profile{
+        display: flex;
+        position:relative;
+        padding: 10px;
+    }
+    .canil_img{
+       
+        bottom: 70px;
+    }
+    .canil_img img{
+       
+        width: 120px;
+        height: 120px;
+    }
+   
+
+}

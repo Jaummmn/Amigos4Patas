@@ -1,0 +1,168 @@
+<nav class="container_login ">
+   
+
+    {% if idLogin is null and idCanilUser is null %}
+
+    <button  class="logIn">Entrar</button>    
+    
+    {% else %}
+    <div class="user">
+        <div class="user_header">
+            <div class="img_user">
+                <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+            </div>   
+            <div class="name_user">
+                <h3>{{nomeUsuario}}</h3> 
+            </div>
+        </div>    
+        <div class="conteudo-hover hidden">
+            <div class="info_user">
+                {% if idCanilUser is defined and idLogin is null %}
+                <a href="http://amigos4patas.com/?pagina=Canil&idCanil={{idCanilUser }}">Meus pets</a>
+                {% else %}
+                <a href="http://amigos4patas.com/?pagina=User&idUser={{idLogin}}">Meu Perfil</a>
+                {% endif %}
+             
+                <a href="http://amigos4patas.com/?pagina=EditProfile">
+                    <p>Editar Perfil</p>
+                </a>
+                
+                <hr>
+                <a href="http://amigos4patas.com/?pagina=LogOut">
+                    <input type="submit" value="Sair">
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}  
+    <img  class="menu" src="public/assets/img/icons8-menu-circulado-100.png">
+    </nav>
+   </div>
+  
+</div>
+
+    <div class="bg">
+        <div class="form" id="form1">
+        <button class="btnClose">x</button>
+        <h2 class="msg_form">Bem-vindo de volta</h2>
+        <form method="post" action="?pagina=Login&metodo=LoginUser" >
+            <input type="text" name="login" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="senha" required>
+            <h3 class="text_modal"><a href="http://amigos4patas.com/?pagina=RecuperarSenha">esqueceu a senha?</a></h3>
+            <input type="submit" value="Entrar">
+            <h3 class="text_modal"><a href="http://amigos4patas.com/?pagina=Cadastro">Nao sou cadastrado</a></h3>
+        </form>
+
+        </div>
+    </div>
+
+        <div class="bg_mobile_menu">    
+            <nav class= "mobile_menu">
+                    <p class="close">></p>
+                    <div class="text_menu">
+                        <nav>
+                            <ul>
+                                <li><a href="http://amigos4patas.com/?pagina=home">Home</a></li>
+                                <li><a href="http://amigos4patas.com/?pagina=feed">Publicações</a></li>
+                                <li><a href="http://amigos4patas.com/?pagina=pets">Pets</a></li>
+                                {% if idLogin is null and idCanilUser is null %}
+
+                                <li><a href="http://amigos4patas.com/?pagina=Login">Entrar</a></li>
+                
+                                {% elseif idCanilUser is defined and idLogin is null %}
+                                <li><a href="http://amigos4patas.com/?pagina=Canil&idCanil={{idCanilUser }}">Meus pets</a></li>
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% elseif idCanilUser is null and idLogin is defined%}
+                               <li> <a href="http://amigos4patas.com/?pagina=User&idUser={{idLogin}}">Meu Perfil</a></li>
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% else %}
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% endif %}  
+
+                            </ul>
+                        </nav>  
+                    </div>
+                    {% if not idLogin is defined or idCanilUser is not defined %}
+                    <div class="user hidden">
+                        <div class="img_user hidden">
+                            <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+                        </div>
+                        <div class="name_user">
+                            <h3>{{nomeUsuario}}</h3> 
+                            
+                       
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="user">
+                        <div class="img_user" >
+                            <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+                        </div>
+                        <div class="name_user">
+                            <h3>{{nomeUsuario}}</h3> 
+                 
+                  
+                        </div>
+                    </div>
+                {% endif %}
+                
+                
+            </nav>
+        </div>
+    </header>
+    
+    <section>
+        <div class="container_user">
+            <div class="box_profile">
+                <div class="img_user_page">
+                    <img src="app/Uploads/Archives/{{ imgPathProfilePage }}" alt="">
+                </div>
+                <div class="user_content">
+                    <div class="name_user">
+                        <h3>{{ nomeUsuarioPage }}</h3>
+                    </div>
+                    {% if  idLogin is defined and idUserPage == idLogin %}
+                    
+                    <div class="btn_edit" id="resultado">
+                        <a href="http://amigos4patas.com/?pagina=EditProfile">
+                            <img src="public/assets/img/editar-informacao.png" alt="">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div> 
+            <div class="categories">
+            <h1 class="title">Publicações do Perfil:</h1>
+            <div class="postagens">
+              
+               {% for postagem in postagens %}
+                    <div class="postagem_single">
+                        <h3>{{ postagem.tituloPostagem }}</h3>
+                        <img src="app/Uploads/Archives/{{ postagem.imgPathPostagem }}" class="imgPostagem" alt="">
+                        <p>{{ postagem.textoPostagem }}</p>
+                        {% if  idLogin is defined and idUserPage == idLogin %}
+                        <div class="btn_edit" id="resultado">
+                            <a href="http://amigos4patas.com/?pagina=EditPostagem&idPostagem={{postagem.idPostagem}}">
+                                <img src="public/assets/img/editar.png" alt=""> 
+                               
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        </div>
+    </section>
+   
+    {% if  idLogin is defined and idUserPage == idLogin %}
+    <div class="container"> 
+            <a href="http://amigos4patas.com/?pagina=NovaPostagem">  <label class="open_forms">+</label></a>
+    </div>
+    {% endif %}

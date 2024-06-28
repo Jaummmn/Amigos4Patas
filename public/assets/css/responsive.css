@@ -1,0 +1,255 @@
+@media only screen and (max-width: 768px) {
+    .form_filter input[type=submit]{
+        margin: 10px auto;
+        display: block;
+    }
+    .logOn,.logIn{
+        display: none;
+    }
+    .menu{
+        display: block;
+        width: 50px;
+        margin: 45px;
+    }
+    .section_text{
+        padding: 5px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    header nav ul li a {
+        font-size: 15px;
+        padding: 5px;
+    }
+    header nav ul li a:visited {
+  
+        text-decoration:none;
+    }
+    .logo img{
+        width: 100px;
+    }
+    .text h1{
+        font-size: 35px;
+    }
+    .text p{
+        font-size: 15px;
+    }
+    .btn_action_container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0;
+    }
+    .Btn_adote{
+        background-color: #f7cd79;
+        border-radius: 40px;
+        width: 80%;
+        font-size: 15px;
+        text-align: center;
+        color: black;
+    }
+    .bg{
+        background-color: rgb(167, 102, 24);
+    }
+    .hidden{
+        display: none;
+    }
+    
+    .mobile_menu{
+        background-color: #f4efc9;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        z-index: 4;
+       
+    }
+    .mobile_menu ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .container_mobile{
+        text-align: center;
+        clear: both;
+    }
+    .close{
+        font-size: 30px;
+        font-weight: bold;
+        padding: 3px;
+        cursor: pointer;
+        width: 30px;
+    }
+    .close_input{
+        font-size: 30px;
+        font-weight: bold;
+        padding: 3px;
+        float: right;
+        cursor: pointer;
+    }
+  
+    
+    .text_menu{
+        font-size: 20px;
+        font-weight: bold;
+        
+    }
+   
+    .text_menu{
+        width: 100%;
+    }
+
+    .text_menu li,.text_menu span{
+        padding: 6px;
+    }
+    .EsqSenha{
+        text-align: center;
+        font-size: 15px;
+        width: 100%;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .user_header{
+        display: none;
+    }
+    .user{
+        position: absolute;
+        bottom: 0;
+        display: flex;
+    }
+    .img_user{
+        margin: 20px;
+        height: 50px;
+        width: 15%;
+       
+        border-radius:50% ;
+    }
+    .home,.Navpets,.contato{
+        display: none;
+    }
+    
+   
+    .img_user img {
+        display: block; 
+        max-width: 100%; 
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+     .img_user {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        border-radius: 50%; 
+    }
+
+    .name_user {
+        text-align: center;
+        max-width: 100%; 
+    }
+    
+    .form_filter{
+        width: 76%;
+        margin: 0 auto;
+    }  
+    .form_filter select{
+        width: 100%;
+    }    
+    .form_filter button {
+        width: 100%;
+    }
+ 
+    
+    .box_pet{
+        height: 210px;
+        width: 170px;
+        background-color:#f7cd79;
+        margin: 10px auto;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 10px;
+    }
+    .pets_grid{
+    
+   
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .form_filter input[type=text] {
+        width: 90%;
+        height: 48px;
+        margin: 20px;
+        border: 1px solid grey;
+        font-size: 18px;
+        padding: 20px;
+  
+} 
+  .text_menu a{
+    text-decoration: none;
+    color: black;
+}
+.open_forms{
+    right: 15px;
+    
+}
+.container_erro img{
+    max-width: 100%;
+    display: block;
+
+}
+.chat_list{
+    width: 90%;
+}
+a .postagem_single {
+    max-width: 100%;
+    margin: 10px;
+}
+
+a .postagem_single img {
+    max-width: 100%;
+}
+
+a .postagem_single h3, a .postagem_single p {
+    padding: 5px;
+}
+.box_relatorio{
+    margin: 15px;
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+}
+}
+@media only screen and (max-width: 1200px){
+
+    .pet_profile{
+        display: flex;
+        flex-direction:column;
+    }
+    .images_pet{
+        margin: 0 auto;
+        max-width: 100%;
+    }
+    .info_pets{
+      margin: 0 auto;
+    }
+    .images_pet{
+        max-width: 70%;
+       
+    }
+   
+} 
+
+@media only screen and (max-width: 500px) {
+    .pets_grid_canil {
+        overflow-x: auto;
+        grid-auto-flow: column;
+        scroll-behavior: auto;
+        overflow-y: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+       
+    }
+}
+
+
+

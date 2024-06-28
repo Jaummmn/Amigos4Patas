@@ -1,0 +1,116 @@
+
+
+.pets_Section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form_filter{
+    max-width: 1520px;
+    width: 100%;
+    padding:20px;
+    margin-bottom: 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 15px;
+}
+
+.label_filter{
+
+    font-size: 20px;
+    text-align: center;
+}
+select{
+    width: 220px;
+    height: 40px;
+    border: 2px solid grey;
+
+}
+
+
+.main_container{
+    margin: 20px 15px;   
+}
+.main_container h2{
+    font-size: 30px;
+    margin: 20px 15px;  
+    color: #000000;
+    font-weight: bold;
+}
+.pets_grid{
+    width: 100%;
+    display: grid;
+    
+    gap:10px;
+    align-items: center;
+    grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+}
+
+.box_pet{
+    height: 320px;
+    width: 235px;
+    background-color:#f7cd79;
+    margin: 10px auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 20px;
+}
+.box_pet a{
+    color: #000000;
+}
+.pet_name{
+    display: flex;
+    justify-content: space-between;
+}
+.pet_name  h3{
+   padding: 15px 15px;
+}
+.pet_img{
+    height: 80%;
+    background:url(/img/dog.jpg) ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+}
+.pet_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.loader{
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+    transition: opacity 0.3s ease-in;
+}
+.loader .show{
+opacity: 1;
+} 
+
+.circle{
+    background-color: #f7cd79;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 5px;
+    animation: bounce 0.5s ease-in infinite;
+}
+.circle:nth-last-of-type(2){
+    animation-delay:0.1s;
+}
+.circle:nth-last-of-type(3){
+    animation-delay:0.2s;
+}
+@keyframes bounce{
+    0%,
+    100%{
+        transform: translateX(0);
+    }
+    50%{
+        transform: translatey(-10px);
+    }
+}

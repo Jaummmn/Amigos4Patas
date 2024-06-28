@@ -1,0 +1,109 @@
+.box_login{
+    display: flex;
+    justify-content: center;
+    margin: 10px
+}.postagemForm {
+    border-radius: 15px;
+    padding: 10px;
+    background-color: white;
+}
+
+.postagens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    color: inherit;
+}
+.postagem_single {
+    background-color: #f4efc9;
+    border: dashed 5px #f7cd79;
+    border-radius: 20px;
+    margin: 20px;
+    width: 100%;
+    max-width: 350px;
+    height: 100%;
+    text-align: justify;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgPostagem {
+    padding: 10px;
+    width: 100%;
+    max-width: 250px; 
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.postagem_single h3, .postagem_single p {
+    padding: 10px;
+    text-align: center;
+}
+.userPostagem{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.imgUser{
+
+    display: flex;
+    justify-content: center;
+}
+.imgUser img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+footer{
+    background-color: rgb(234, 182, 118);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    text-align: justify;
+}
+.container_info{
+    display: flex;
+    padding: 5px;
+}
+.dev{
+    text-align: center;
+}
+.container_info p{
+    width: 330px;
+    margin: 5px;
+}
+.footer_box{
+    max-width: 1150px;
+    margin: 30px auto;
+}
+.logo_footer
+{
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+}
+.logo_footer img
+{
+    width: 100px;
+ 
+}
+.btn_delete {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn_delete input[type="image"] {
+    max-width: 70px;
+    height: auto;
+}

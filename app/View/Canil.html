@@ -1,0 +1,266 @@
+<nav class="container_login ">
+   
+
+    {% if idLogin is null and idCanilUser is null %}
+
+    <button  class="logIn">Entrar</button>    
+    
+    {% else %}
+    <div class="user">
+        <div class="user_header">
+            <div class="img_user">
+                <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+            </div>   
+            <div class="name_user">
+                <h3>{{nomeUsuario}}</h3> 
+            </div>
+        </div>    
+        <div class="conteudo-hover hidden">
+            <div class="info_user">
+                {% if idCanilUser is defined and idLogin is null %}
+                <a href="http://amigos4patas.com/?pagina=Canil&idCanil={{idCanilUser }}">Meus pets</a>
+                {% else %}
+                <a href="http://amigos4patas.com/?pagina=User&idUser={{idLogin}}">Meu Perfil</a>
+                {% endif %}
+             
+                <a href="http://amigos4patas.com/?pagina=EditProfile">
+                    <p>Editar Perfil</p>
+                </a>
+                
+                <hr>
+                <a href="http://amigos4patas.com/?pagina=LogOut">
+                    <input type="submit" value="Sair">
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}  
+    <img  class="menu" src="public/assets/img/icons8-menu-circulado-100.png">
+    </nav>
+   </div>
+  
+</div>
+
+    <div class="bg">
+        <div class="form" id="form1">
+        <button class="btnClose">x</button>
+        <h2 class="msg_form">Bem-vindo de volta</h2>
+        <form method="post" action="?pagina=Login&metodo=LoginUser" >
+            <input type="text" name="login" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="senha" required>
+            <h3 class="text_modal"><a href="http://amigos4patas.com/?pagina=RecuperarSenha">esqueceu a senha?</a></h3>
+            <input type="submit" value="Entrar">
+            <h3 class="text_modal"><a href="http://amigos4patas.com/?pagina=Cadastro">Nao sou cadastrado</a></h3>
+        </form>
+
+        </div>
+    </div>
+
+        <div class="bg_mobile_menu">    
+            <nav class= "mobile_menu">
+                    <p class="close">></p>
+                    <div class="text_menu">
+                        <nav>
+                            <ul>
+                                <li><a href="http://amigos4patas.com/?pagina=home">Home</a></li>
+                                <li><a href="http://amigos4patas.com/?pagina=feed">Publicações</a></li>
+                                <li><a href="http://amigos4patas.com/?pagina=pets">Pets</a></li>
+                                {% if idLogin is null and idCanilUser is null %}
+
+                                <li><a href="http://amigos4patas.com/?pagina=Login">Entrar</a></li>
+                
+                                {% elseif idCanilUser is defined and idLogin is null %}
+                                <li><a href="http://amigos4patas.com/?pagina=Canil&idCanil={{idCanilUser }}">Meus pets</a></li>
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% elseif idCanilUser is null and idLogin is defined%}
+                               <li> <a href="http://amigos4patas.com/?pagina=User&idUser={{idLogin}}">Meu Perfil</a></li>
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% else %}
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% endif %}  
+
+                            </ul>
+                        </nav>  
+                    </div>
+                    {% if not idLogin is defined or idCanilUser is not defined %}
+                    <div class="user hidden">
+                        <div class="img_user hidden">
+                            <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+                        </div>
+                        <div class="name_user">
+                            <h3>{{nomeUsuario}}</h3> 
+                            
+                       
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="user">
+                        <div class="img_user" >
+                            <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+                        </div>
+                        <div class="name_user">
+                            <h3>{{nomeUsuario}}</h3> 
+                 
+                  
+                        </div>
+                    </div>
+                {% endif %}
+                
+                
+            </nav>
+        </div>
+</header>
+
+     <section class="canil">
+        <div class="container_pets_canil">
+            <div class="canil_profile">
+                    <div class="canil_banner">
+                        <img src="app/Uploads/Archives/{{imgPathBanner}}" alt="" >
+                    </div>
+                    <div class="canil_img">
+                        <img src="app/Uploads/Archives/{{imgPathCanil}}" alt="" >
+                    </div>
+                <div class="canil_section">
+                            {% if  idCanilUser is defined and idCanil == idCanilUser %}
+                    
+                        <div class="btn_edit_profile_canil" id="resultado">
+                            <a href="http://amigos4patas.com/?pagina=EditProfile">
+                                <img src="public/assets/img/editar-informacao.png" alt="">
+                            </a>
+                        </div>
+                    
+                    {% endif %}
+                <div class="canil_main_profile">
+            
+                    <div class="canil_descrpiton">
+                        <h1>{{nomeCanil}}</h1>
+                        <p>{{canil_descricao}}</p>
+                        <h3>Chave Pix: {{doacao}}</h3>
+                        <h3>localidade: {{canil_localizacao}}</h3>
+                    
+                    </div> 
+                    
+                </div>
+                <h2 class="title">Pets desse Canil :</h2>
+
+        {% if  idCanilUser is defined and idCanil == idCanilUser %}
+          
+        <div class="pets_grid_canil pets_grid">                     
+           
+        {% for key, nomePet in nomePets %}
+            <div class="box_pet">
+                <a href="http://amigos4patas.com/?pagina=petSingle&idpet={{ idPet[key] }}">
+                    <div class="pet_img">
+                        <img src="app/Uploads/Archives/{{ imgPathPet[key] }}" alt="">
+                    </div>
+                    <div class="pet_name">
+                        <h3>
+                            {{ nomePet }}
+                        </h3>
+                        {% if  idCanilUser is defined and idCanil == idCanilUser %}
+                        <div class="btn_edit" id="resultado">
+                            <a href="http://amigos4patas.com/?pagina=AdminCanilEdit&idpet={{idPet[key] }}">
+                                <img src="public/assets/img/editar.png" alt="">
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div> 
+                </a> 
+            </div>
+        {% endfor %}
+        </div>
+        {%else%}
+        <div class="pets_grid">                     
+             
+            {% for key, nomePet in nomePets %}
+                <div class="box_pet">
+                    <a href="http://amigos4patas.com/?pagina=petSingle&idpet={{ idPet[key] }}">
+                        <div class="pet_img">
+                            <img src="app/Uploads/Archives/{{ imgPathPet[key] }}" alt="">
+                        </div>
+                        <div class="pet_name">
+                            <h3>
+                                {{ nomePet }}
+                            </h3>
+                            {% if  idCanilUser is defined and idCanil == idCanilUser %}
+                            <div class="btn_edit" id="resultado">
+                                <a href="http://amigos4patas.com/?pagina=AdminCanilEdit&idpet={{idPet[key] }}">
+                                    <img src="public/assets/img/editar.png" alt="">
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div> 
+                    </a> 
+                </div>
+            {% endfor %}
+            </div>
+            
+    {% endif %}
+            {% if  idCanilUser is defined and idCanil == idCanilUser %}
+            <h2 class="title">Pets Adotados :</h2>
+            <div class="pets_grid_canil pets_grid">                     
+               
+                {% for key, nomePetsAdotado in nomePetsAdotado %}
+                    <div class="box_pet">
+                        <a href="http://amigos4patas.com/?pagina=petSingle&idpet={{ idPetAdotado[key] }}">
+                            <div class="pet_img">
+                                <img src="app/Uploads/Archives/{{ imgPathPetAdotado [key] }}" alt="">
+                            </div>
+                            <div class="pet_name">
+                                <h3>
+                                    {{ nomePetsAdotado}}
+                                </h3>
+                                {% if  idCanilUser is defined and idCanil == idCanilUser %}
+                                <div class="btn_edit" id="resultado">
+                                    <a href="http://amigos4patas.com/?pagina=AdminCanilEdit&idpet={{idPetAdotado[key] }}">
+                                        <img src="public/assets/img/editar.png" alt="">
+                                    </a>
+                                </div>
+                                {% endif %}
+                            </div> 
+                        </a> 
+                    </div>
+                {% endfor %}
+                </div>
+                <h2 class="title">Pets Arquivados :</h2>
+                <div class="pets_grid_canil pets_grid">                     
+                   
+                    {% for key, nomePetsArquivado in nomePetsArquivado %}
+                        <div class="box_pet">
+                            <a href="http://amigos4patas.com/?pagina=petSingle&idpet={{idPetArquivado[key] }}">
+                                <div class="pet_img">
+                                    <img src="app/Uploads/Archives/{{ imgPathPetArquivados[key] }}" alt="">
+                                </div>
+                                <div class="pet_name">
+                                    <h3>
+                                        {{ nomePetsArquivado }}
+                                    </h3>
+                                    {% if  idCanilUser is defined and idCanil == idCanilUser %}
+                                    <div class="btn_edit" id="resultado">
+                                        <a href="http://amigos4patas.com/?pagina=AdminCanilEdit&idpet={{idPetArquivado[key] }}">
+                                            <img src="public/assets/img/editar.png" alt="">
+                                        </a>
+                                    </div>
+                                    {% endif %}
+                                </div> 
+                            </a> 
+                        </div>
+                    {% endfor %}
+                    </div>
+           
+            {% endif %}
+        </div>
+       </section> 
+           
+        </div>
+    {% if  idCanilUser is defined and idCanil == idCanilUser %}
+    <div class="container"> 
+            <a href="http://amigos4patas.com/?pagina=AdminCanil">  <label class="open_forms">+</a></label>
+    </div>
+    {% endif %}

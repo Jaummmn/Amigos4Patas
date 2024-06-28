@@ -1,0 +1,100 @@
+
+textarea{
+  width: 90%;
+  margin: 20px;
+  border: 1px solid grey;
+  font-size: 18px;
+  padding:5px;
+}
+section > .box_login{
+  display: flex;
+  align-items: center;
+  margin: 40px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+  padding: 20px;
+  border-radius:25px ;
+}
+
+.box_login input[type=text] {
+  width: 90%;
+  height: 48px;
+  margin: 20px;
+  border: 1px solid grey;
+  font-size: 18px;
+  padding: 20px;
+
+} 
+.box_login input[type=submit] {
+  display: block;
+  margin: 10px auto;
+} 
+.select_user{
+    flex-direction: row;
+    align-self: center;
+    justify-content: center;
+}
+.select_user label{
+    font-size: 20px;
+    padding: 5px;
+}
+
+.canil_info select{
+  width: 90%;
+  height: 48px;
+  margin: 20px;
+  border: 1px solid grey;
+  font-size: 18px;
+
+}
+
+.user_info{
+  width: 100%;
+  max-width: 450px;
+}
+
+#picture__input {
+    display: none;
+}
+  
+  .picture {
+    max-width: 400px;
+    width: 90%;
+    height: 200px;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+    margin-top:10px ;
+    margin: 0 auto;
+  }
+  
+  .picture:hover {
+    color: #777;
+    background: #ccc;
+  }
+  
+  .picture:active {
+    border-color: turquoise;
+    color: turquoise;
+    background: #eee;
+  }
+  
+  .picture:focus {
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .picture__img {
+    max-width: 100%;
+  }
+  
+

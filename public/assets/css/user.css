@@ -1,0 +1,20 @@
+.img_user_page 
+{
+display: flex;
+justify-content: center;
+margin: 10px;
+}
+.img_user_page img
+{
+    width: 200px;
+    height: 200px;
+    border-radius:50%;
+    object-fit: cover;
+    
+}
+.user_content{
+    display: flex;
+  
+    justify-content: center;
+    align-items: center;
+}

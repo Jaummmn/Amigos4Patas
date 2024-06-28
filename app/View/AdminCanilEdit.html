@@ -1,0 +1,176 @@
+<nav class="container_login ">
+   
+
+    {% if idLogin is null and idCanilUser is null %}
+
+    <button  class="logIn">Entrar</button>    
+    
+    {% else %}
+    <div class="user">
+        <div class="user_header">
+            <div class="img_user">
+                <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+            </div>   
+            <div class="name_user">
+                <h3>{{nomeUsuario}}</h3> 
+            </div>
+        </div>    
+        <div class="conteudo-hover hidden">
+            <div class="info_user">
+                {% if idCanilUser is defined and idLogin is null %}
+                <a href="http://amigos4patas.com/?pagina=Canil&idCanil={{idCanilUser }}">Meus pets</a>
+                {% else %}
+                <a href="http://amigos4patas.com/?pagina=User&idUser={{idLogin}}">Meu Perfil</a>
+                {% endif %}
+             
+                <a href="http://amigos4patas.com/?pagina=EditProfile">
+                    <p>Editar Perfil</p>
+                </a>
+                
+                <hr>
+                <a href="http://amigos4patas.com/?pagina=LogOut">
+                    <input type="submit" value="Sair">
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}  
+    <img  class="menu" src="public/assets/img/icons8-menu-circulado-100.png">
+    </nav>
+   </div>
+  
+</div>
+
+    <div class="bg">
+        <div class="form" id="form1">
+        <button class="btnClose">x</button>
+        <h2 class="msg_form">Bem-vindo de volta</h2>
+        <form method="post" action="?pagina=Login&metodo=LoginUser" >
+            <input type="text" name="login" placeholder="E-mail" required>
+            <input type="password" name="senha" placeholder="senha" required>
+            <h3 class="text_modal"><a href="http://amigos4patas.com/?pagina=RecuperarSenha">esqueceu a senha?</a></h3>
+            <input type="submit" value="Entrar">
+            <h3 class="text_modal"><a href="http://amigos4patas.com/?pagina=Cadastro">Nao sou cadastrado</a></h3>
+        </form>
+
+        </div>
+    </div>
+
+        <div class="bg_mobile_menu">    
+            <nav class= "mobile_menu">
+                    <p class="close">></p>
+                    <div class="text_menu">
+                        <nav>
+                            <ul>
+                                <li><a href="http://amigos4patas.com/?pagina=home">Home</a></li>
+                                <li><a href="http://amigos4patas.com/?pagina=feed">Publicações</a></li>
+                                <li><a href="http://amigos4patas.com/?pagina=pets">Pets</a></li>
+                                {% if idLogin is null and idCanilUser is null %}
+
+                                <li><a href="http://amigos4patas.com/?pagina=Login">Entrar</a></li>
+                
+                                {% elseif idCanilUser is defined and idLogin is null %}
+                                <li><a href="http://amigos4patas.com/?pagina=Canil&idCanil={{idCanilUser }}">Meus pets</a></li>
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% elseif idCanilUser is null and idLogin is defined%}
+                               <li> <a href="http://amigos4patas.com/?pagina=User&idUser={{idLogin}}">Meu Perfil</a></li>
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% else %}
+                                <a href="http://amigos4patas.com/?pagina=LogOut">
+                                    <input type="submit" value="Sair">
+                                </a>
+                                {% endif %}  
+
+                            </ul>
+                        </nav>  
+                    </div>
+                    {% if not idLogin is defined or idCanilUser is not defined %}
+                    <div class="user hidden">
+                        <div class="img_user hidden">
+                            <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+                        </div>
+                        <div class="name_user">
+                            <h3>{{nomeUsuario}}</h3> 
+                            
+                       
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="user">
+                        <div class="img_user" >
+                            <img src="app/Uploads/Archives/{{imgPath}}" alt="" >
+                        </div>
+                        <div class="name_user">
+                            <h3>{{nomeUsuario}}</h3> 
+                 
+                  
+                        </div>
+                    </div>
+                {% endif %}
+                
+                
+            </nav>
+        </div>
+</header>
+<section class="bg_form_child">
+    <div class="container_form">
+        <div class="images_pet">
+            <img src="app/Uploads/Archives/{{imgPathPetSingle}}">
+        </div>
+        <form class="form_pet" action="?pagina=AdminCanilEdit&metodo=UpdatePet&idpet={{idPetPage}}" method="post" enctype="multipart/form-data">
+            <h2>Atualizar dados do Pet</h2>
+            <label>Nome:</label>
+            <input type="text" name="nomePet" value="{{nomePet}}">
+            <label>Ano que o Pet nasceu</label>
+            <input type="number" min="2000" name="idadePet" value="{{idadePet}}">
+            <label>Especie do Pet:</label>
+            <select name="especie" required>
+                <option value="Cachorro" {% if EspeciePet == 'Cachorro' %} selected {% endif %}>Cachorro</option>
+                <option value="Gato" {% if EspeciePet == 'Gato' %} selected {% endif %}>Gato</option>
+            </select>
+            <label>Raça:</label>
+            <select name="raca" required>
+                {% for raca in racas %}
+                <option value="{{raca['idRaca']}}" {% if raca['idRaca'] == 'racaPet' %} selected {% endif %}>{{raca['raca']}}</option>
+                {% endfor %}
+            </select>
+            <label>Castrado:</label>
+            <select name="castrado" required>
+                <option value="1" {% if castrado == 'Sim' %} selected {% endif %}>Sim</option>
+                <option value="2" {% if castrado == 'Não' %} selected {% endif %}>Não</option>
+            </select>
+            <label>Cor:</label>
+            <select name="cor" required>
+                {% for cor in cores %}
+                <option value="{{cor['Idcor']}}" {% if cor['Idcor'] == corId %} selected {% endif %}>{{cor['Cor']}}</option>
+                {% endfor %}
+            </select>
+            <label>Descricao:</label>
+            <textarea cols="20" rows="5" name="descricao" maxlength="155">{{pet_descricao}}</textarea>
+            <label>Sexo:</label>
+            <select name="sexo">
+                <option value="Macho" {% if sexo == 'Macho' %} selected {% endif %}>Macho</option>
+                <option value="Femea" {% if sexo == 'Femea' %} selected {% endif %}>Fêmea</option>
+            </select>
+            <label>Porte:</label>
+            <select name="porte">
+                {% for p in porte %}
+                <option value="{{p}}" {% if p == pet_porte %} selected {% endif %}>{{p}}</option>
+                {% endfor %}
+            </select>
+            <label>Status do pet</label>
+            <select name="statusPet">
+                {% for status in statusPet %}
+                <option value="{{status}}" {% if status == StatusPetPage %} selected {% endif %}>{{status}}</option>
+                {% endfor %}
+            </select>
+            <label><h3>Nova foto do Pet:</h3></label>
+            <input type="file" name="picturePet">
+            <input type="submit" value="Atualizar Pet" required>
+        </form>
+    </div>
+</section>
