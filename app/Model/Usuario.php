@@ -163,14 +163,7 @@ private static function sendVerificationEmail($email, $name, $token)
     try {
         $verificationLink = "http://amigos4patas.com/?pagina=ValidaConta&token=" . $token;
 
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'noreplyamigos4patas@gmail.com';
-        $mail->Password = 'nrju xaij jdwk tbez';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
-
+  
         $mail->setFrom('noreplyamigos4patas@gmail.com', 'Amigo4Patas');
         $mail->addAddress($email, $name);
 
@@ -327,14 +320,7 @@ public static function Login()
     
             $verificationLink = "http://amigos4patas.com/?pagina=RecuperarSenha&metodo=UpdateUserPassword&token=".$token;
             
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'noreplyamigos4patas@gmail.com';
-            $mail->Password = 'nrju xaij jdwk tbez';
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;
-    
+       
             $mail->setFrom('noreplyamigos4patas@gmail.com', 'Amigo4Patas');
             $mail->addAddress($email);
     
